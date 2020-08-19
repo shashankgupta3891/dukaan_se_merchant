@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "143341395255",
+    "firebase_url": "https://mohallashops.firebaseio.com",
+    "project_id": "mohallashops",
+    "storage_bucket": "mohallashops.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143341395255:android:99125e8b87901bdee94eb2",
+        "android_client_info": {
+          "package_name": "com.mohallashops.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143341395255-r5fa46hv3lmvbodpca09i0f3sq8qnfp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohallashops.android",
+            "certificate_hash": "6a45ad44e431fb3815004353b92a85b815f0ff12"
+          }
+        },
+        {
+          "client_id": "143341395255-74499bmns3vtvha2jmqstmdcgk033akk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohallashops.android",
+            "certificate_hash": "feb447bb54858c34955eee79aa02525f0398baa5"
+          }
+        },
+        {
+          "client_id": "143341395255-v4qp0vhbg8rrohnbd6d3rjf21lu45opv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdUV0sTdLDXd5h6Ekpc4KA2saBlcUWI4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143341395255-v4qp0vhbg8rrohnbd6d3rjf21lu45opv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
