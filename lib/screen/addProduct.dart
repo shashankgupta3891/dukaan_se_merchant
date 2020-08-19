@@ -1,7 +1,7 @@
+import 'package:android/model/Model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:android/constants.dart';
-import 'file:///C:/Users/shash/OneDrive/Desktop/flutterProjects/android/lib/model/Model.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class AddProduct extends StatefulWidget {
@@ -50,6 +50,7 @@ class _AddProductState extends State<AddProduct> {
                     ),
                     TextFormField(
                       keyboardType: TextInputType.name,
+                      autofocus: true,
                       style: kTextStyle.copyWith(color: Colors.black),
                       decoration: kAddProductInputDecoration.copyWith(
                           hintText: 'Ex:- Mango'),

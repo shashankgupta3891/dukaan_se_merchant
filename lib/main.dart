@@ -1,10 +1,9 @@
 import 'package:android/screen/auth/login.dart';
 import 'package:android/screen/auth/signup.dart';
+import 'package:android/screen/dashBoard.dart';
 import 'package:flutter/material.dart';
-//import 'package:android/screen/auth/login.dart';
-//import 'package:android/screen/auth/signup.dart';
-import 'file:///C:/Users/shash/OneDrive/Desktop/flutterProjects/android/lib/controller/waiting.dart';
-import 'file:///C:/Users/shash/OneDrive/Desktop/flutterProjects/android/lib/screen/dashBoard.dart';
+
+import 'controller/waiting.dart';
 
 void main() => runApp(MyApp());
 

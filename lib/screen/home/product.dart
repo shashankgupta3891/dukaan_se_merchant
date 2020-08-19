@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../productDetails.dart';
+
 class Products extends StatefulWidget {
   @override
   _ProductsState createState() => _ProductsState();
@@ -34,15 +36,15 @@ class _ProductsState extends State<Products> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final product = snapshot.data.documents;
-          List<Text> productWidget = [];
-          print(product[0].data);
-          for (var p in product) {
-            final productTitle = p.data['t'];
-            final productAmount = p.data['p'];
-            final productQuantity = p.data['q'];
-
-            productWidget.add(Text("${productTitle}"));
-          }
+//          List<Text> productWidget = [];
+//          print(product[0].data);
+//          for (var p in product) {
+//            final productTitle = p.data['t'];
+//            final productAmount = p.data['p'];
+//            final productQuantity = p.data['q'];
+//
+//            productWidget.add(Text("${productTitle}"));
+//          }
 
           return GridView.builder(
             itemCount: product.length,
@@ -57,57 +59,67 @@ class _ProductsState extends State<Products> {
               int productQuantity = product[index].data['q'];
               return Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                  color: Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Image.network(
-                          'https://images.pexels.com/photos/4022107/pexels-photo-4022107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                          fit: BoxFit.fitWidth,
-                        ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetails(),
                       ),
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              productTitle,
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text('Amount'),
-                                    Text(
-                                      productAmount.toString(),
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Text('Quantity'),
-                                    Text(
-                                      productQuantity.toString(),
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
+                    );
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Image.network(
+                            'https://images.pexels.com/photos/4022107/pexels-photo-4022107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
-                      ),
-                    ],
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                productTitle,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Text('Amount'),
+                                      Text(
+                                        productAmount.toString(),
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text('Quantity'),
+                                      Text(
+                                        productQuantity.toString(),
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

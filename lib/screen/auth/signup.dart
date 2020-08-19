@@ -1,10 +1,11 @@
+import 'package:android/model/Model.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:android/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'file:///C:/Users/shash/OneDrive/Desktop/flutterProjects/android/lib/model/Model.dart';
+
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'package:progress_dialog/progress_dialog.dart';
