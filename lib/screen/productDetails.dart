@@ -5,35 +5,74 @@ import 'package:sliver_fab/sliver_fab.dart';
 import '../constants.dart';
 
 class ProductDetails extends StatefulWidget {
+  final String title;
+  final String des;
+  final int amount;
+  final int quantity;
+
+  ProductDetails({
+    @required this.quantity,
+    @required this.des,
+    @required this.title,
+    @required this.amount,
+  });
+
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
   final _formKey = GlobalKey<FormState>();
-  String title;
-  String des;
-  int price;
-  int quantity;
+  TextEditingController titleTextController;
+  TextEditingController desTextController;
+  TextEditingController priceTextController;
+  TextEditingController quantityTextController;
+
   bool readOnly = true;
+  FocusNode focusNode;
+
+  Function onEditing;
+  Function onSaving;
+
+  @override
+  void initState() {
+    super.initState();
+
+    titleTextController = TextEditingController(text: widget.title);
+    desTextController = TextEditingController(text: widget.des);
+    priceTextController = TextEditingController(text: widget.amount.toString());
+    quantityTextController =
+        TextEditingController(text: widget.quantity.toString());
+
+    onEditing = () {
+      setState(() {
+        readOnly = true;
+      });
+    };
+    onSaving = () {
+      setState(() {
+        readOnly = false;
+      });
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+//      resizeToAvoidBottomInset: false,
+//      resizeToAvoidBottomPadding: false,
       body: Builder(
         builder: (context) {
           return SliverFab(
+//            topScalingEdge: 0,
             floatingWidget: FloatingActionButton(
-              backgroundColor: kSecondaryColor,
-              child: Icon(Icons.edit),
-              onPressed: () {
-                setState(() {
-                  readOnly = !readOnly;
-                });
-              },
+              backgroundColor: readOnly ? kSecondaryColor : kPrimaryColor,
+              child: Icon(readOnly ? Icons.edit : Icons.save),
+              onPressed: readOnly ? onSaving : onEditing,
             ),
             slivers: [
               SliverAppBar(
+//                elevation: 20,
                 backgroundColor: Colors.white,
                 expandedHeight: 256.0,
                 pinned: true,
@@ -66,7 +105,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: Form(
                   key: _formKey,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
@@ -84,6 +123,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                               ),
                               TextFormField(
+                                controller: titleTextController,
+                                focusNode: focusNode,
                                 readOnly: readOnly,
                                 keyboardType: TextInputType.name,
                                 style: kTextStyle.copyWith(color: Colors.black),
@@ -92,9 +133,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 validator: (value) => value.isEmpty
                                     ? "Name cannot be empty"
                                     : null,
-                                onChanged: (value) {
-                                  title = value;
-                                },
+//                                onChanged: (value) {
+//                                  title = value;
+//                                },
                               ),
                             ],
                           ),
@@ -113,13 +154,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                               ),
                               TextFormField(
+                                controller: desTextController,
                                 readOnly: readOnly,
                                 maxLines: 4,
                                 decoration: kAddProductInputDecoration.copyWith(
                                     hintText: 'Ex:- This is Mango from USA'),
-                                onChanged: (value) {
-                                  des = value;
-                                },
+//                                onChanged: (value) {
+//                                  des = value;
+//                                },
                               ),
                             ],
                           ),
@@ -138,6 +180,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                               ),
                               TextFormField(
+                                controller: priceTextController,
                                 readOnly: readOnly,
                                 keyboardType: TextInputType.numberWithOptions(
                                   decimal: false,
@@ -148,9 +191,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 validator: (value) => value.isEmpty
                                     ? "Amount cannot be empty"
                                     : null,
-                                onChanged: (value) {
-                                  price = int.parse(value);
-                                },
+//                                onChanged: (value) {
+//                                  price = int.parse(value);
+//                                },
                               ),
                             ],
                           ),
@@ -169,6 +212,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                               ),
                               TextFormField(
+                                controller: quantityTextController,
                                 readOnly: readOnly,
                                 validator: (v) {
                                   if (v.isEmpty == true) {
@@ -180,9 +224,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 keyboardType: TextInputType.number,
                                 decoration: kAddProductInputDecoration.copyWith(
                                     hintText: 'Ex:- 23'),
-                                onChanged: (value) {
-                                  quantity = int.parse(value);
-                                },
+//                                onChanged: (value) {
+//                                  quantity = int.parse(value);
+//                                },
                               ),
                             ],
                           ),

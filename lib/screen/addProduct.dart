@@ -15,6 +15,8 @@ class _AddProductState extends State<AddProduct> {
   String des;
   int price;
   int quantity;
+
+  bool isProductSelected = true;
   addItem() async {
     final users = await FirebaseAuth.instance.currentUser();
     await ProductModel(merchantUID: users.uid)
@@ -36,6 +38,44 @@ class _AddProductState extends State<AddProduct> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: RaisedButton(
+                        color: isProductSelected ? kSecondaryColor : null,
+                        child: Text(
+                          'Products',
+                          style: TextStyle(
+                            color: isProductSelected ? Colors.white : null,
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isProductSelected = true;
+                          });
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: RaisedButton(
+                        color: !isProductSelected ? kSecondaryColor : null,
+                        child: Text(
+                          'Services',
+                          style: TextStyle(
+                              color: !isProductSelected ? Colors.white : null),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isProductSelected = false;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
                 child: Column(
@@ -114,34 +154,37 @@ class _AddProductState extends State<AddProduct> {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      child: Text(
-                        'Product Quantity',
-                        style: kAddProductTextStyle,
+              Visibility(
+                visible: isProductSelected,
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                          'Product Quantity',
+                          style: kAddProductTextStyle,
+                        ),
                       ),
-                    ),
-                    TextFormField(
-                      validator: (v) {
-                        if (v.isEmpty == true) {
-                          return 'Please Enter';
-                        } else {
-                          return null;
-                        }
-                      },
-                      keyboardType: TextInputType.number,
-                      decoration: kAddProductInputDecoration.copyWith(
-                          hintText: 'Ex:- 23'),
-                      onChanged: (value) {
-                        quantity = int.parse(value);
-                      },
-                    ),
-                  ],
+                      TextFormField(
+                        validator: (v) {
+                          if (v.isEmpty == true) {
+                            return 'Please Enter';
+                          } else {
+                            return null;
+                          }
+                        },
+                        keyboardType: TextInputType.number,
+                        decoration: kAddProductInputDecoration.copyWith(
+                            hintText: 'Ex:- 23'),
+                        onChanged: (value) {
+                          quantity = int.parse(value);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Padding(

@@ -61,6 +61,19 @@ class _SignupPageState extends State<SignupPage> {
     "Delhi NCR",
     "Puducherry"
   ];
+  List<String> categories = [
+    "General Store",
+    "Barber Shop",
+    "Medicine Store",
+    "Electronics Shop",
+    "Mother Dairy",
+    "Sweets Shop",
+    "Toy Store",
+    "Jewellery Shop",
+    "Cosmetics Store",
+    "Beauty Parlour",
+    "Book Store",
+  ];
 
   String shopName;
   String address;
@@ -68,6 +81,7 @@ class _SignupPageState extends State<SignupPage> {
   String smsCode;
   String verificationID;
   String statesData;
+  String categoryData;
 
   Future<void> verifyPhone() async {
     print("Number to ${dialCode + phoneNumber}");
@@ -371,6 +385,46 @@ class _SignupPageState extends State<SignupPage> {
                                 ],
                               ),
                             ),
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 0, vertical: 5),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'CATEGORY',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  DropdownButton<String>(
+                                    value: categoryData,
+                                    elevation: 16,
+                                    style: TextStyle(color: Colors.black),
+                                    underline: Container(
+                                      height: 2,
+                                      color: Colors.black26,
+                                    ),
+                                    onChanged: (String newValue) {
+                                      setState(() {
+                                        categoryData = newValue;
+                                      });
+                                    },
+                                    items: categories
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ],
+                              ),
+                            ),
 
                             Spacer(
                               flex: 1,
@@ -380,7 +434,8 @@ class _SignupPageState extends State<SignupPage> {
                               color: kSecondaryColor,
 //                              padding: EdgeInsets.symmetric(vertical: 15),
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
                               child: Text(
                                 'Sign Up',
                                 style: TextStyle(

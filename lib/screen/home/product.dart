@@ -49,12 +49,14 @@ class _ProductsState extends State<Products> {
           return GridView.builder(
             itemCount: product.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 0.8,
-                crossAxisCount: 2,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4),
+              childAspectRatio: 0.8,
+              crossAxisCount: 2,
+              crossAxisSpacing: 4,
+              mainAxisSpacing: 4,
+            ),
             itemBuilder: (context, index) {
               String productTitle = product[index].data['t'];
+              String productDescription = product[index].data['d'];
               int productAmount = product[index].data['p'];
               int productQuantity = product[index].data['q'];
               return Padding(
@@ -63,7 +65,12 @@ class _ProductsState extends State<Products> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => ProductDetails(),
+                        builder: (context) => ProductDetails(
+                          title: productTitle,
+                          des: productDescription,
+                          amount: productAmount,
+                          quantity: productQuantity,
+                        ),
                       ),
                     );
                   },
