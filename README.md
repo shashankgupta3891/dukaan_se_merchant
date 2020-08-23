@@ -5,6 +5,7 @@
 Apart from this, it also helps the shop owners in stock management and providing the analytics for the same. So that, they will know about the status of the sale of each of its products. 
 Also, it become really handy for the shop owners to inform the customers in case of any temporarily close via notification. 
 <br>
+### About the Project
 <ul>
   <li>
 Dukaan Se is a one-step mobile application that allows the users to conveniently avail the benefits of local products and services. It assists the users by schedule their pickups of the products and the appointment of services as per their convenience and slot availability.
@@ -26,7 +27,7 @@ No need to search for a product at multiple shops by roaming around. Just check 
 <img src="https://user-images.githubusercontent.com/43954262/90977893-e636d700-e566-11ea-9899-7e9c3b66ffc0.jpeg" width="200">|
 <img src="https://user-images.githubusercontent.com/43954262/90977896-ea62f480-e566-11ea-8773-568d897d7648.jpeg" width="200">|
 
-### Check the User Side of the App from [here] (https://github.com/Im-awesome-Aadi/Dukaan-Se-user).
+### Check the User Side of the App from [here](https://github.com/Im-awesome-Aadi/Dukaan-Se-user).
 
 If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
 
