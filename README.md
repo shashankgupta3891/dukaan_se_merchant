@@ -6,6 +6,8 @@ Apart from this, it also helps the shop owners in stock management and providing
 Also, it become really handy for the shop owners to inform the customers in case of any temporarily close via notification. 
 <br>
 ### About the Project
+
+### The Term "Dukaan Se" is the Hindi Transalation of English Word "From Shop".
 <ul>
   <li>
 Dukaan Se is a one-step mobile application that allows the users to conveniently avail the benefits of local products and services. It assists the users by schedule their pickups of the products and the appointment of services as per their convenience and slot availability.
