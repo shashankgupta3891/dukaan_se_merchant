@@ -52,6 +52,7 @@ class _DashBoardState extends State<DashBoard>
           backgroundColor: kSecondaryColor,
           child: Icon(Icons.add),
           onPressed: () {
+            print("Hello");
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => AddProduct()),
