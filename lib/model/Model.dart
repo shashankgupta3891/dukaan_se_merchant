@@ -32,3 +32,24 @@ class ProductModel {
     });
   }
 }
+
+// Newly Added
+class ServiceModel {
+  final String merchantUID;
+  ProductModel({this.merchantUID});
+  final CollectionReference merchantCollection =
+      Firestore.instance.collection('merchants');
+  Future addProduct(String title, String des, int price, int quantity) async {
+    return await Firestore.instance.collection('services').add({
+      "mId": merchantUID,
+      "t": title,
+      "d": des,
+      "q": quantity,
+      "p": price
+    }).then((value) async {
+      return await merchantCollection.document(merchantUID).setData({
+        'service': FieldValue.arrayUnion([value.documentID]),
+      });
+    });
+  }
+}

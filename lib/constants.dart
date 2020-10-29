@@ -20,6 +20,7 @@ TextStyle kTextStyle = TextStyle(color: Colors.black);
 
 final Color kPrimaryColor = Color(0xff136a8a);
 final Color kSecondaryColor = Color(0xff267871);
+final Color kTempColor = Color(0xff267971);
 
 final List<Color> kAuthGradient = [
   Color(0xff136a8a),
@@ -30,6 +31,15 @@ InputDecoration kAddProductInputDecoration = InputDecoration(
   hintText: 'Ex:- Mango',
   filled: true,
   fillColor: Colors.grey[200],
+  border: OutlineInputBorder(
+    borderSide: BorderSide.none,
+    borderRadius: BorderRadius.circular(20),
+  ),
+);
+InputDecoration kRemoveProductInputDecoration = InputDecoration(
+  hintText: 'Remove',
+  filled: true,
+  fillColor: Colors.grey[400],
   border: OutlineInputBorder(
     borderSide: BorderSide.none,
     borderRadius: BorderRadius.circular(20),
