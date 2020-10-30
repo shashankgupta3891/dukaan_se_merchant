@@ -12,7 +12,18 @@ class MerchantModel {
         .updateData({'sn': shopname, 'a': address});
   }
 }
+class CustomerModel {
+  final String uid;
+  CustomerModel({this.uid});
 
+  final CollectionReference merchantCollection =
+      Firestore.instance.collection('merchants');
+  Future updateMerchantData(String shopname, String address) async {
+    return await merchantCollection
+        .document(uid)
+        .updateData({'sn': shopname, 'a': address});
+  }
+}
 class ProductModel {
   final String merchantUID;
   ProductModel({this.merchantUID});
