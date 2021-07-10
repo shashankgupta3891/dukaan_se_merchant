@@ -12,6 +12,7 @@ class MerchantModel {
         .updateData({'sn': shopname, 'a': address});
   }
 }
+
 class CustomerModel {
   final String uid;
   CustomerModel({this.uid});
@@ -24,6 +25,7 @@ class CustomerModel {
         .updateData({'sn': shopname, 'a': address});
   }
 }
+
 class ProductModel {
   final String merchantUID;
   ProductModel({this.merchantUID});
@@ -47,7 +49,7 @@ class ProductModel {
 // Newly Added
 class ServiceModel {
   final String merchantUID;
-  ProductModel({this.merchantUID});
+  ServiceModel({this.merchantUID});
   final CollectionReference merchantCollection =
       Firestore.instance.collection('merchants');
   Future addProduct(String title, String des, int price, int quantity) async {

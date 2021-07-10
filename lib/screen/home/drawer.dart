@@ -17,6 +17,7 @@ class CustomDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(color: Colors.blue),
+            child: Container(),
           ),
           ListTile(
             title: Text(

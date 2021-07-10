@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
     Color d = Color(0x8A1E1D39);
     return Scaffold(
       backgroundColor: kPrimaryColor,
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: Builder(
         builder: (BuildContext context) {
           return ModalProgressHUD(
